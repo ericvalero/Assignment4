@@ -1,0 +1,100 @@
+#include <iostream>
+using namespace std;
+
+//prototype
+void userMenu();
+void callSortType1(char);
+void callSortType2(char);
+
+
+int main()
+
+{
+char choice1;
+char choice2;
+
+userMenu();
+cin >> choice1 >> choice2;
+// from here choice1 and 2 would get passed down to the next functions
+
+callSortType1(choice1);
+callSortType2(choice2);
+}
+
+void userMenu()
+{
+
+	cout << "Choose two sorts you wish to compare:" << endl;
+	cout << "B = Bubble sort" << endl;
+	cout << "I = Insertion sort" << endl;
+	cout << "M = Merge sort" << endl;
+	cout << "Q = Quick sort" << endl;
+	cout << "E = Exit program" << endl << endl;
+	cout << "Enter two letter choices (or EE to exit): ";
+}
+
+void callSortType1(char choice1)
+{
+	string sortType1;
+					switch (toupper(choice1))
+					{
+					case 'B':
+						sortType1 = "Bubble Sort";
+						//function call
+						break;
+					case 'M':
+						sortType1 = "Merge Sort";
+						break;
+						//function call
+					case 'Q':
+						sortType1 = "Quick Sort";
+						//fucntion call
+						break;
+					case 'I':
+						sortType1 = "Insertion Sort";
+						//function call
+						break;
+
+					case 'E':
+						//return 0;
+						break;
+
+					default:
+						// possibly error message
+						break;
+					}
+}
+
+
+void callSortType2(char choice2)
+{
+	string sortType2;
+					switch (toupper(choice2))
+					{
+					case 'B':
+						sortType2 = "Bubble Sort";
+						//function call
+						break;
+					case 'M':
+						sortType2 = "Merge Sort";
+						break;
+						//function call
+					case 'Q':
+						sortType2 = "Quick Sort";
+						//fucntion call
+						break;
+					case 'I':
+						sortType2 = "Insertion Sort";
+						//function call
+						break;
+
+					case 'E':
+						//return 0;
+						break;
+
+					default:
+						// possibly error message
+						break;
+					}
+}
+			
