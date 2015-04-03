@@ -1,0 +1,84 @@
+/*-------------------------------------------------------------------------
+ int main()
+Description: calls other functions
+calls: menu, createArray, callSortType, displayHeader
+-----------------------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------------
+void displayHeader()
+description: brief introduction of what the program does
+--------------------------------------------------------------------------------*/
+
+
+/* ------------------------------------------------------------------------
+name:				void menu()
+description:		displays the types of sorts to user and allows user to make a selection
+calls: 				bubble sort, quick sort, insertion sort, merge sort
+*---------------------------------------------------------------------------/
+
+
+
+/*-------------------------------------------------------------------------------
+name:				int createArray()
+description: 		creates a random array
+return param:		 *randomArray
+---------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------
+name:				void callSortType (choice)
+description:		will call the function of the choice that the user selected from a switch statement
+					It will get called twice, one for each choice
+input parameters: 	choice - whatever the user picked
+----------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------
+name:				void bubbleSort(*randomArray)
+description:		sorts random array by using the bubble sort method
+parameters:			*randomArray
+--------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------
+name:				void mergeSort(*randomArray)
+description			sorts random array by using merge sort method
+parameters			*randomArray
+-----------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------------
+name:				void quickSort(*randomArray)
+description:		sorts random array by using quick sort method
+parameters			*random array
+*****************************************************************************************/
+
+
+/*----------------------------------------------------------------------------------------
+name:				void insertionSort(*randomArray)
+description			sorts random array by using insertion sort method
+parameters			*randomArray
+-------------------------------------------------------------------------------------*/
+
+/*******************************************************************************
+name:				bool checkSort(*sortedArray)
+description			Checks to see if the array was properly sorted
+parameters:			sortedArray
+return:				true if sorted correctly, false if not
+-----------------------------------------------------------------------------------*/
+
+
+/*************************************************************************************
+name:				doublecalculateTime(startTime, endTime)
+description:		function will take end time and start of sort and calculate the 
+					time it took the sort to complete
+parameters:			startTime, endTime
+return:				calculatedTime					 (endTime - startTime)
+-------------------------------------------------------------------------------------*/
+
+/**************************************************************************************
+name:				displayResults (sortType, calculatedTime )
+description			Displays the results from previous functions, and calls main
+					in order to make the program loop until user wants to exit
+parameters			calculatedTime
+calls to:			main
+****************************************************************************************/
+
+
