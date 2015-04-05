@@ -1,84 +1,65 @@
 /*-------------------------------------------------------------------------
  int main()
 Description: calls other functions
-calls: menu, createArray, callSortType, displayHeader
+calls: Displaymenu, createArray, fillArrays, createRandoms
 -----------------------------------------------------------------------------*/
 
-
-/*---------------------------------------------------------------------------
-void displayHeader()
-description: brief introduction of what the program does
---------------------------------------------------------------------------------*/
-
+/*------------------------------------------------------------------
+int creatRandoms()
+description creates an array with random numbers
+call: none
+input parameters:none
+returns: rand		- array filled with random numbers
+--------------------------------------------------------------------*/
 
 /* ------------------------------------------------------------------------
-name:				void menu()
+name:				void displayMenu(choice)
 description:		displays the types of sorts to user and allows user to make a selection
 calls: 				bubble sort, quick sort, insertion sort, merge sort
+returns: 		choice
 *---------------------------------------------------------------------------/
 
 
 
 /*-------------------------------------------------------------------------------
-name:				int createArray()
-description: 		creates a random array
-return param:		 *randomArray
+name:				int createArrays()
+description: 		creates an array
+return:		 	array 
 ---------------------------------------------------------------------------------*/
 
-/*-------------------------------------------------------------------------------
-name:				void callSortType (choice)
+/*---------------------------------------------------------------------------------
+name:			int fillArrays(*randomArray)
 description:		will call the function of the choice that the user selected from a switch statement
 					It will get called twice, one for each choice
 input parameters: 	choice - whatever the user picked
-----------------------------------------------------------------------------------*/
+calls to:		bubble, merge, quick, insertion
+-------------------------------------------------------------------------------*/
+
 
 /*--------------------------------------------------------------------------------------
-name:				void bubbleSort(*randomArray)
+name:				void bubble(choice, *randomArray)
 description:		sorts random array by using the bubble sort method
 parameters:			*randomArray
 --------------------------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------------------------
-name:				void mergeSort(*randomArray)
+name:				void merge(choice, *randomArray)
 description			sorts random array by using merge sort method
 parameters			*randomArray
 -----------------------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------------------------------
-name:				void quickSort(*randomArray)
+name:				void quick(choice, *randomArray)
 description:		sorts random array by using quick sort method
 parameters			*random array
 *****************************************************************************************/
 
 
 /*----------------------------------------------------------------------------------------
-name:				void insertionSort(*randomArray)
+name:				void insertion(choice, *randomArray)
 description			sorts random array by using insertion sort method
 parameters			*randomArray
 -------------------------------------------------------------------------------------*/
 
-/*******************************************************************************
-name:				bool checkSort(*sortedArray)
-description			Checks to see if the array was properly sorted
-parameters:			sortedArray
-return:				true if sorted correctly, false if not
------------------------------------------------------------------------------------*/
-
-
-/*************************************************************************************
-name:				doublecalculateTime(startTime, endTime)
-description:		function will take end time and start of sort and calculate the 
-					time it took the sort to complete
-parameters:			startTime, endTime
-return:				calculatedTime					 (endTime - startTime)
--------------------------------------------------------------------------------------*/
-
-/**************************************************************************************
-name:				displayResults (sortType, calculatedTime )
-description			Displays the results from previous functions, and calls main
-					in order to make the program loop until user wants to exit
-parameters			calculatedTime
-calls to:			main
-****************************************************************************************/
 
 
