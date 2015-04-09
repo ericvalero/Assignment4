@@ -1,3 +1,7 @@
-//create function arrays
+//create results arrays
 
-//fill arrays
+//fill results arrays
+
+//bubble sort
+
+//quick sort

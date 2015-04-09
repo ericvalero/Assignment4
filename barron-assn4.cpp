@@ -1,7 +1,5 @@
-//bubble sort
+//create random arrays
 
 //merge sort
-
-//quick sort
 
 //insertion sort
