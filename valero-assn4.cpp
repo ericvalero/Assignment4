@@ -13,6 +13,24 @@ double** results(int arraySize) {
 //fill results arrays
 
 //bubble sort
+int* bubbleSort(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (arr[j] < arr[i])
+			{
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+
+	return arr;
+
+}
 
 //quick sort
 void quickSort(int* arr, int left, int right) 

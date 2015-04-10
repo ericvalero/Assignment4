@@ -1,6 +1,17 @@
 #include "barron-assn4.h"
 #include <cmath>
 //create random arrays
+int* createCopy(int* arr, int size)
+{
+	int* newArray = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		newArray[i] = arr[i];
+	}
+
+	return newArray;
+
+}
 
 //merge sort
 int* mergeSort(int* input, int p, int r)
