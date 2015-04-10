@@ -1,11 +1,26 @@
+#include <iostream>
+
+using namespace std;
 //create results arrays
+
+int getResultSize() {
+	int answer;
+	
+	cout << "How many times would you like to run each sort?";
+	cout << endl;
+	
+	cin >> answer;
+	
+	return answer;
+}
+
 double** results(int arraySize) {
 	double** results = new double*[2];
 	double* result1 = new double[arraySize];
 	double* result2 = new double[arraySize];
 	
-	results[0] = result1;
-	results[1] = result2;
+	results[0] = new double[arraySize];
+	results[1] = new double[arraySize];
 	
 	return results;
 }

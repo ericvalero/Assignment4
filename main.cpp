@@ -11,8 +11,19 @@ using namespace std;
 
 int main()
 {
-	
-
+	//this is an array of pointers to the results arrays. 
+	//indexes 0 and 1 are the two arrays
+	//access them using the syntax: (resultsArrays[index(1 or 2)])[index]
+	int numResults = getResultSize();
+    double** resultsArrays = results(numResults);
+    
+    //this is just a test to demonstrate how the results array functions
+    (resultsArrays[0])[0] = 1.2;
+    cout << (resultsArrays[0])[0];
+    cin.get();
+    //end test
+    
+    
 	int startTime = 0, endTime = 0, elapsedTime = 0;
 	bool looping = true;
 	char input;
