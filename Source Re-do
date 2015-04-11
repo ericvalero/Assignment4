@@ -1,0 +1,557 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <string>
+#include <cmath>
+
+
+using namespace std;
+
+//Declare our predefined array size of 100,000
+int SIZE 	= 100000;
+//minimum value for numbers in array
+int MINIMUM = 1;
+//maximum value for numbers in array
+int MAXIMUM = 30000;
+
+//Function to print out any array of numbers
+void printArray(int* arr, int size);
+
+//Function that creates a copy of an array to allow us to have a backup for sorting purposes
+int* createCopy(int* arr, int size);
+
+//Function that sorts an array using the bubble sort method
+int* bubbleSort(int* arr, int size);
+
+//Function that sorts an array using the insertion sort method
+int* insertionSort(int* arr, int size);
+
+//Function that sorts an array using the merge sort method
+int* mergeSort(int* input, int p, int r);
+
+//Function that merges two arrays together, used in part of the merge sort sorting method
+void merge(int* input, int p, int r);
+
+//Function that sorts an array using the quicksort sorting method
+void quickSort(int* arr, int left, int right);
+
+//Funciton that verifies that an array is sorted in ascending order
+bool verifySorted(int* arr, int size);
+
+//Function to display the user menu
+void printDisplay();
+
+//Function to process the users input
+string processInput();
+
+//Function that takes a string and returns the two sort method choices
+char* choices(string s);
+
+//Function that prompts user for number of times to execute sorts
+int sortInput();
+
+//Function that generates number of random arrays based on user's choice returns an array of arrays
+int** generateArrays(int count, int size);
+
+//Function that creates an identical copy of the generated arrays for use for both sorts
+int** copyArrays(int **toCopy, int count, int size);
+
+//Function that executes a sort based on a character input and returns the number of tics it took to run
+int executeSort(char choice, int* arr, int size);
+
+//Function to return a string based on the sort char passed in
+string parseChoice(char c);
+
+//Function to average out the number of tics from a results array
+double averageResults(int* arr, int size);
+
+//Function to ensure one of the 5 letters options is input
+bool properChoice(string s);
+
+int getResultSize();
+
+double** results(int);
+
+
+
+int main()
+{
+
+	//Seed our random number generator in order to verify random data 
+	srand(time(NULL));
+
+	//Our boolean that controls our user menu loop
+	bool running = true;
+
+	while (running)
+	{
+		
+		int numberOfLoops = 0;
+		string sortChoice = " ";
+
+		//Print sort menu to user
+		printDisplay();
+		
+		bool trying = true;
+		while (trying)
+		{
+			//Get our user input for which two sorting methods to compare
+			getline(cin, sortChoice);
+			
+			//Ensure our user followed proper input
+			if (sortChoice.size() != 2  || !properChoice(sortChoice))
+			{
+				//Try again if invalid input
+				cout << "Please provide proper input and try again!" << endl;
+			}
+			else
+			{
+				trying = false;
+			}
+		}
+
+		//Split our input string into two upper case characters representing the users two sort choices
+		char* splitChoice = choices(sortChoice);
+		char t1 = splitChoice[0];
+		char t2 = splitChoice[1];
+		t1 = toupper(t1);
+		t2 = toupper(t2);
+
+		//Exit if user chose 'EE'
+		if (t1 == 'E' || t2 == 'E')
+		{
+			running = false;
+		}
+		//Else we execute the sorts with the two chosen methods
+		if (running)
+		{
+			//Get the users desired number of times to run
+			numberOfLoops = getResultSize();
+			cin.ignore();
+			cout << endl;
+
+			//Allocate memory for our results of the two methods
+			int* resultsSort1 = new int[numberOfLoops];
+			int* resultsSort2 = new int[numberOfLoops];
+		
+			//Allocate memory and fill our arrays for the two different sorting methods
+			int** sortArrays1 = generateArrays(numberOfLoops, SIZE);
+			int** sortArrays2 = copyArrays(sortArrays1, numberOfLoops, SIZE);
+		
+			//Sort through and output our data
+			for (int i = 0; i < numberOfLoops; i++)
+			{
+				cout << "Starting sort #" << i+1 << "..." << endl << endl;
+				
+				//Execute our two sorts and return the tics taken to sort
+				int tics1 = executeSort(t1, sortArrays1[i], SIZE);
+				int tics2 = executeSort(t2, sortArrays2[i], SIZE);
+
+				cout << parseChoice(t1) << " time " << tics1 << endl;
+				cout << parseChoice(t2) << " time " << tics2 << endl;
+
+				cout << endl;
+
+				//Store our data in our results array after outputting to screen
+				resultsSort1[i] = tics1;
+				resultsSort2[i] = tics2;
+			}
+			//Print out our final averages
+			cout << endl << "SORTING RESULTS" << endl;
+			cout << "-----------------------------------" << endl;
+			cout << "\t" << parseChoice(t1) << " " << averageResults(resultsSort1, numberOfLoops) << " tics on average" << endl;
+			cout << "\t" << parseChoice(t2) << " " << averageResults(resultsSort2, numberOfLoops) << " tics on average" << endl;
+			
+			//Deallocate memory of the arrays we used
+			delete resultsSort1;
+			delete resultsSort2;
+			delete sortArrays1;
+			delete sortArrays2;
+		
+		}
+	
+	
+	}
+	
+	return 0;
+}
+
+void printDisplay()
+{
+	cout << "Choose two sorts you wish to compare:" << endl;
+	cout << "B = Bubble Sort" << endl;
+	cout << "I = Insertion Sort" << endl;
+	cout << "M = Merge Sort" << endl;
+	cout << "Q = Quick Sort" << endl;
+	cout << "E = Exit program" << endl;
+	cout << endl << endl;
+	cout << "Enter two letter choices (or EE to exit) :";
+}
+
+void printArray(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << endl;
+	}
+}
+
+int* bubbleSort(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (arr[j] < arr[i])
+			{
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+
+	return arr;
+
+}
+
+int* insertionSort(int* arr, int size)
+{
+	int i, j, temp;
+	for (i = 1; i<size; i++)
+	{
+		temp = arr[i];
+		j = i - 1;
+		while (temp<arr[j] && j >= 0)
+		{
+			arr[j + 1] = arr[j];
+			--j;
+		}
+		arr[j + 1] = temp;
+	}
+	return arr;
+}
+
+int* createCopy(int* arr, int size)
+{
+	int* newArray = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		newArray[i] = arr[i];
+	}
+
+	return newArray;
+
+}
+
+
+void merge(int* input, int p, int r)
+{
+	int mid = floor((p + r) / 2);
+	int i1 = 0;
+	int i2 = p;
+	int i3 = mid + 1;
+
+	// Temp array
+	int* temp = new int[r - p + 1];
+
+	// Merge in sorted form the 2 arrays
+	while (i2 <= mid && i3 <= r)
+		if (input[i2] < input[i3])
+			temp[i1++] = input[i2++];
+		else
+			temp[i1++] = input[i3++];
+
+	// Merge the remaining elements in left array
+	while (i2 <= mid)
+		temp[i1++] = input[i2++];
+
+	// Merge the remaining elements in right array
+	while (i3 <= r)
+		temp[i1++] = input[i3++];
+
+	// Move from temp array to master array
+	for (int i = p; i <= r; i++)
+		input[i] = temp[i - p];
+}
+
+int* mergeSort(int* input, int p, int r)
+{
+	if (p < r)
+	{
+		int mid = floor((p + r) / 2);
+		mergeSort(input, p, mid);
+		mergeSort(input, mid + 1, r);
+		merge(input, p, r);
+	}
+
+	return input;
+}
+
+void quickSort(int* arr, int left, int right) 
+{
+
+	int i = left, j = right;
+
+	int tmp;
+
+	int pivot = arr[(left + right) / 2];
+
+
+	while (i <= j) {
+
+		while (arr[i] < pivot)
+
+			i++;
+
+		while (arr[j] > pivot)
+
+			j--;
+
+		if (i <= j) {
+
+			tmp = arr[i];
+
+			arr[i] = arr[j];
+
+			arr[j] = tmp;
+
+			i++;
+
+			j--;
+
+		}
+
+	};
+
+
+	if (left < j)
+
+		quickSort(arr, left, j);
+
+	if (i < right)
+
+		quickSort(arr, i, right);
+
+}
+
+bool verifySorted(int* arr, int size)
+{
+	bool sorted = true;
+	for (int i = 0; i < size; i++)
+	{
+		if (i == size - 1)
+		{
+			sorted = true;
+			return sorted;
+		}
+		if (arr[i]>arr[i + 1])
+		{
+			sorted = false;
+			return sorted;
+		}
+	}
+
+	return sorted;
+
+
+}
+
+string processInput()
+{
+	string s;
+	cin.ignore('\n');
+	getline(cin, s);
+	return s;
+}
+
+char* choices(string s)
+{
+	char* c = new char[2];
+	char sort1 = s[0];
+	char sort2 = s[1];
+	c[0] = sort1;
+	c[1] = sort2;
+	return c;
+}
+
+/*int sortInput()
+{
+	int choice;
+	cout << "Enter the number of times to repeat each sort (1 or more):";                              Removed this function since you made the equivalent
+	cin >> choice;
+	return choice;
+}*/
+
+int** generateArrays(int count, int size)
+{
+
+	int** arrays = new int*[count];
+	
+	for (int i = 0; i < count; i++)
+	{
+		arrays[i] = new int[size];
+		for (int j = 0; j < size; j++)
+		{
+			int randomNumber = rand() % MAXIMUM + MINIMUM;
+			arrays[i][j] = randomNumber;
+		}
+	}
+
+	return arrays;
+
+
+}
+
+int** copyArrays(int **toCopy, int count, int size)
+{
+	int **copy = new int*[count];
+	for (int i = 0; i < count; i++)
+	{
+		copy[i] = createCopy(toCopy[i], size);
+	}
+	return copy;
+
+}
+
+int executeSort(char choice, int* arr, int size)
+{
+	int startTime = 0, endTime = 0, elapsedTime = 0;
+	int* testSorted = arr;
+	switch (choice)
+	{
+		case 'B':
+			startTime = clock();
+			cout << "Executing bubble sort" << endl;
+			testSorted = bubbleSort(testSorted, size);
+			if (verifySorted(testSorted, size))
+			{
+				cout << "Sorted validated!" << endl;
+				endTime = clock();
+			}
+			elapsedTime = endTime - startTime;
+			return elapsedTime;
+			break;
+
+		case 'I':
+			startTime = clock();
+			cout << "Executing insert sort" << endl;
+			testSorted = insertionSort(testSorted, size);
+			if (verifySorted(testSorted, size))
+			{
+				cout << "Sorted validated!" << endl;
+				endTime = clock();
+			}
+			elapsedTime = endTime - startTime;
+			return elapsedTime;
+			break;
+
+		case 'M':
+			startTime = clock();
+			cout << "Executing merge sort" << endl;
+			testSorted = mergeSort(testSorted, 0, size-1);
+			if (verifySorted(testSorted, size))
+			{
+				cout << "Sorted validated!" << endl;
+				endTime = clock();
+			}
+			elapsedTime = endTime - startTime;
+			return elapsedTime;
+			break;
+
+		case 'Q':
+			startTime = clock();
+			cout << "Executing quick sort" << endl;
+			quickSort(testSorted, 0, size-1);
+			if (verifySorted(testSorted, size))
+			{
+				cout << "Sorted validated!" << endl;
+				endTime = clock();
+			}
+			elapsedTime = endTime - startTime;
+			return elapsedTime;
+			break;
+
+		default: cout << "INVALID INPUT ERROR" << endl;
+	
+	}
+
+}
+
+string parseChoice(char c)
+{
+	switch (c)
+	{
+	
+		case 'B':
+			return "Bubble Sort";
+			break;
+		case 'I':
+			return "Insertion Sort"; 
+			break;
+		case 'M':
+			return "Merge Sort";
+			break;
+		case 'Q':
+			return "Quick Sort";
+			break;
+	
+		default: cout << "ERROR INPUT ERROR" << endl;
+	
+
+	}
+	
+
+}
+
+double averageResults(int* arr, int size)
+{
+	double total = 0.0;
+	for (int i = 0; i < size; i++)
+	{
+		total += arr[i];
+	}
+
+	return total / size;
+
+
+}
+
+bool properChoice(string s)
+{
+	char choice1 = s[0];
+	char choice2 = s[1];
+	choice1 = toupper(choice1);
+	choice2 = toupper(choice2);
+
+	if (choice1 != 'B' && choice1 != 'I' && choice1 != 'M' && choice1 != 'Q' && choice1 != 'E')
+	{
+		return false;
+	}
+
+	if (choice2 != 'B' && choice2 != 'I' && choice2 != 'M' && choice2 != 'Q' && choice2 != 'E')
+	{
+		return false;
+	}
+
+	return true;
+}
+
+int getResultSize() {
+	int answer;
+	cout << "Enter the number of times to repeat each sort (1 or more):";						// I changed this line to match the pdf
+	cout << endl;
+	cin >> answer;
+	return answer;
+}
+
+double** results(int arraySize) {
+	double** results = new double*[2];
+	double* result1 = new double[arraySize];
+	double* result2 = new double[arraySize];
+	
+	results[0] = new double[arraySize];
+	results[1] = new double[arraySize];
+	
+	return results;
+}
