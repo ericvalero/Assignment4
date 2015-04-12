@@ -24,6 +24,6 @@ int** generateArrays(int count, int size);
 //Function that creates an identical copy of the generated arrays for use for both sorts
 int** copyArrays(int **toCopy, int count, int size);
 
-bool properChoice(string s);
+bool properChoice(string);
 
 int getResultSize();
