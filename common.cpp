@@ -4,7 +4,7 @@
 #include <string>
 #include <cmath>
 #include "common.h"
-
+p
 using namespace std;
 //*********************************************************************
 // FUNCTION: 	displayHeader
@@ -79,22 +79,6 @@ bool verifySorted(int* arr, int size)
 
 }
 
-//*********************************************************************
-// FUNCTION: 	processInput
-// DESCRIPTION: it reads the input from the user and processes it
-// INPUT:
-// Parameters: 	None
-// Return Val: 	input - the choices the user made
-// returned by a function
-// Parameters: Name and description of the output parameters
-//**********************************************************************
-string processInput()
-{
-	string input;
-	cin.ignore('\n');
-	getline(cin, input);
-	return input;
-}
 
 //*********************************************************************
 // FUNCTION: 	choices
