@@ -32,6 +32,7 @@ using namespace std;
 //		size	- the size of the array
 // OUTPUT:
 // Return Val: 	arr	- the array sorted using insertion sort
+// IMPLEMENTED BY:	Jose Barron
 //**********************************************************************
 int* insertionSort(int* arr, int size)
 {
@@ -60,6 +61,7 @@ int* insertionSort(int* arr, int size)
 //		size	- size of the array
 // OUTPUT:
 // Return Val: 	newArray	- new copy of array created
+// IMPLEMENTED BY:	Jose Barron
 //**********************************************************************
 int* createCopy(int* arr, int size)
 {
@@ -85,6 +87,7 @@ int* createCopy(int* arr, int size)
 //		left	- the furthest left value
 //		right	- the furthest right value
 // CALLS TO: 	quickSort
+// IMPLEMENTED BY:	Jose Barron
 //**********************************************************************
 void quickSort(int* arr, int left, int right) 
 {
@@ -127,6 +130,7 @@ void quickSort(int* arr, int left, int right)
 //		size	- array size
 // OUTPUT:
 // Return Val: 	arrays	- the array that gets created
+// IMPLEMENTED BY:	Jose Barron
 //**********************************************************************
 int** generateArrays(int count, int size)
 {
@@ -156,6 +160,7 @@ int** generateArrays(int count, int size)
 //		size		- size of array
 // Return Val: 	copy		- new array copy
 //calls to:	createCopy
+// IMPLEMENTED BY:	Jose Barron
 //**********************************************************************
 int** copyArrays(int **toCopy, int count, int size)
 {
@@ -176,6 +181,7 @@ int** copyArrays(int **toCopy, int count, int size)
 // Parameters: 	input
 // Return Val: 	true: if choice is valid
 //		false: if choice is invalid
+// IMPLEMENTED BY:	Jose Barron
 //**********************************************************************
 
 bool properChoice(string input)
@@ -205,6 +211,7 @@ bool properChoice(string input)
 // INPUT:	answer	- the number of times to repeat each sort
 // Parameters: 	none
 // Return Val: 	answer	- the number of times to repeat each sort
+// IMPLEMENTED BY:	Jose Barron
 //**********************************************************************
 int getResultSize() {
 	int answer;
