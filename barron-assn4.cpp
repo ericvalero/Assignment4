@@ -4,7 +4,6 @@
 #include <string>
 #include <cmath>
 #include "barron-assn4.h"
-#include "common.h"
 
 using namespace std;
 

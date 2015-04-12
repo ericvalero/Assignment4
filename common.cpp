@@ -4,8 +4,6 @@
 #include <string>
 #include <cmath>
 #include "common.h"
-#include "valero-assn4.h"
-#include "barron-assn4.h"
 
 using namespace std;
 
@@ -61,6 +59,31 @@ char* choices(string s)
 	return c;
 }
 
+string parseChoice(char c)
+{
+	switch (c)
+	{
+	
+		case 'B':
+			return "Bubble Sort";
+			break;
+		case 'I':
+			return "Insertion Sort"; 
+			break;
+		case 'M':
+			return "Merge Sort";
+			break;
+		case 'Q':
+			return "Quick Sort";
+			break;
+	
+		default: cout << "ERROR INPUT ERROR" << endl;
+	
+
+	}
+	
+
+}
 
 int executeSort(char choice, int* arr, int size)
 {
@@ -126,28 +149,4 @@ int executeSort(char choice, int* arr, int size)
 
 }
 
-string parseChoice(char c)
-{
-	switch (c)
-	{
-	
-		case 'B':
-			return "Bubble Sort";
-			break;
-		case 'I':
-			return "Insertion Sort"; 
-			break;
-		case 'M':
-			return "Merge Sort";
-			break;
-		case 'Q':
-			return "Quick Sort";
-			break;
-	
-		default: cout << "ERROR INPUT ERROR" << endl;
-	
 
-	}
-	
-
-}

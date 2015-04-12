@@ -1,9 +1,5 @@
-#include <iostream>
-#include <ctime>
-#include <cstdlib>
-#include <string>
-#include <cmath>
-
+#include "valero-assn4.h"
+#include "barron-assn4.h"
 using namespace std;
 
 //GLOBAL CONSTANTS
