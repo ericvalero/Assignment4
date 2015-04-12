@@ -6,7 +6,7 @@
 */
 //  DESIGNER:       Eric Valero
 //  FUNCTIONS:    
-/*		    printArray-		prints out an array of numbers
+/*		 
 		    bubbleSort-		sorts array using the bubble sort algorithm
 		    merge-		sorts an array using the merge sort method
 		    mergeSort-		merges two arrays together, used in part of the merge sort sorting method
@@ -25,25 +25,6 @@
 #include "valero-assn4.h"
 
 using namespace std;
-
-
-//*********************************************************************
-// FUNCTION: 	printArray
-// DESCRIPTION: prints array
-// INPUT:
-// Parameters: 	*arr	- an array with random values
-//		size	- the size of the array
-// OUTPUT:
-// Return Value: none
-//**********************************************************************
-void printArray(int* arr, int size)
-{
-	for (int i = 0; i < size; i++)					// recursive loop to go through all the values
-	{
-		cout << arr[i] << endl;					// print out of the array
-	}
-}
-
 
 //*********************************************************************
 // FUNCTION: 	bubbleSort
