@@ -21,8 +21,6 @@ void printDisplay();
 
 //Function that displays a brief description of what the program does
 void displayHeader();
-//Function to process the users input
-string processInput();
 
 //Function that takes a string and returns the two sort method choices
 char* choices(string s);
