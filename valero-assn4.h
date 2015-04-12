@@ -1,3 +1,21 @@
+//***************************************************************************
+//  CODE FILENAME:  Valero-assn4-funcs.h
+//  DESCRIPTION:    Functions prototypes used for Valero-assn4-funcs.cpp
+//  TERM:	          Spring 8 weeks 2 2015
+/*			
+*/
+//  DESIGNER:       Eric Valero
+//  FUNCTIONS:    
+/*		  printArray-		  prints out an array of numbers
+		    bubbleSort-		  sorts array using the bubble sort algorithm
+		    merge-		      sorts an array using the merge sort method
+		    mergeSort-		  merges two arrays together, used in part of the merge sort sorting method
+		    averageResults-	Function to average out the number of tics from a results array
+		    
+					
+*/
+//***************************************************************************/
+
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
