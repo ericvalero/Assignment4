@@ -30,7 +30,7 @@ int* insertionSort(int* arr, int size)
 			arr[j + 1] = arr[j];				// shifts all values to the right
 			--j;						// updates counter to move left
 		}
-		arr[unsorted + 1] = temp;				// inserts value into sorted portion of array
+		arr[j + 1] = temp;					// inserts value into sorted portion of array
 	}
 	return arr;							// returns sorted array
 }
@@ -61,65 +61,59 @@ void quickSort(int* arr, int left, int right)
 
 	int i = left;
 	int j = right;
-
 	int tmp;
-
 	int pivot = arr[(left + right) / 2];
-
-
+	
 	while (i <= j) {
 
 		while (arr[i] < pivot)
-
 			i++;
 
 		while (arr[j] > pivot)
-
 			j--;
 
 		if (i <= j) {
-
 			tmp = arr[i];
-
 			arr[i] = arr[j];
-
 			arr[j] = tmp;
-
 			i++;
-
 			j--;
-
 		}
-
 	};
-
-
+	
 	if (left < j)
-
 		quickSort(arr, left, j);
 
 	if (i < right)
-
 		quickSort(arr, i, right);
 
 }
 
+//*********************************************************************
+// FUNCTION: 	generateArrays
+// DESCRIPTION: creates an array using rand() % HighLimit + lowLimit command
+// INPUT:
+// Parameters: 	count 	- a counter
+//		size	- array size
+// OUTPUT:
+// Return Val: 	arrays	- the array that gets created
+//**********************************************************************
 int** generateArrays(int count, int size)
 {
 
-	int** arrays = new int*[count];
+	int** arrays = new int*[count];					// initializes new array
 	
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < count; i++)				
 	{
 		arrays[i] = new int[size];
-		for (int j = 0; j < size; j++)
+		for (int j = 0; j < size; j++)				// repeats until all elements of array have values
 		{
-			int randomNumber = rand() % MAXIMUM + MINIMUM;
+			int randomNumber = rand() % MAXIMUM + MINIMUM;	// creates random value for array	
 			arrays[i][j] = randomNumber;
 		}
 	}
 
-	return arrays;
+	return arrays;							// returns array
 
 }
 
