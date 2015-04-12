@@ -1,129 +1,114 @@
 #include <iostream>
 #include <ctime>
-#include <time.h>
-#include <stdlib.h>
+#include <cstdlib>
+#include <string>
+#include <cmath>
 #include "common.h"
 #include "valero-assn4.h"
 #include "barron-assn4.h"
 
 using namespace std;
-//main implemented by eric valero
 
 int main()
 {
-	//this is an array of pointers to the results arrays. 
-	//indexes 0 and 1 are the two arrays
-	//access them using the syntax: (resultsArrays[index(1 or 2)])[index]
-	int numResults = getResultSize();
-    double** resultsArrays = results(numResults);
-    
-    //this is just a test to demonstrate how the results array functions
-    (resultsArrays[0])[0] = 1.2;
-    cout << (resultsArrays[0])[0];
-    cin.get();
-    //end test
-    
-    
-	int startTime = 0, endTime = 0, elapsedTime = 0;
-	bool looping = true;
-	char input;
+
+	//Seed our random number generator in order to verify random data 
 	srand(time(NULL));
-	int* test = new int[100000];
-	int* insertSorted = new int[100000];
-	for (int i = 0; i < 100000; i++)
+
+	//Our boolean that controls our user menu loop
+	bool running = true;
+
+	while (running)
 	{
-		int randomNumber = rand() % 30000 + 1;
-		test[i] = randomNumber;
-	}
-	while (looping)
-	{
+		
+		int numberOfLoops = 0;
+		string sortChoice = " ";
+
+		//Print sort menu to user
 		printDisplay();
-		cin >> input;
-		input = toupper(input);
-		switch (input)
+		
+		bool trying = true;
+		while (trying)
 		{
+			//Get our user input for which two sorting methods to compare
+			getline(cin, sortChoice);
 			
-			case 'B': 
-				cout << "Executing bubble sort" << endl;	
-				break;
-
-			case 'I':
-				startTime = clock();
-				cout << "Executing insert sort" << endl;
-				insertSorted = insertionSort(test, 100000);
-				if (verifySorted(insertSorted, 100000))
-				{
-					cout << "IT WORKED" << endl;
-				}
-				endTime = clock();
-				elapsedTime = endTime - startTime;
-				cout << "This insert sort took " << elapsedTime << " tics..." << endl;
-				//resultArray[0] = elapsedTime;
-				//resultArray[1] = elapsedTime;
-				//resultArray[2] = elapsedTime;
-				break;
-
-			case 'M': 
-				cout << "Executing merge sort" << endl;
-				break;
-
-			case 'Q': 
-				cout << "Executing quick sort" << endl;
-				break;
-
-			case 'E': 
-				cout << "Exiting program..." << endl;
-				looping = false;
-				break;
-
-			default: cout << "Incorrect input please try again..." << endl;
+			//Ensure our user followed proper input
+			if (sortChoice.size() != 2  || !properChoice(sortChoice))
+			{
+				//Try again if invalid input
+				cout << "Please provide proper input and try again!" << endl;
+			}
+			else
+			{
+				trying = false;
+			}
 		}
+
+		//Split our input string into two upper case characters representing the users two sort choices
+		char* splitChoice = choices(sortChoice);
+		char t1 = splitChoice[0];
+		char t2 = splitChoice[1];
+		t1 = toupper(t1);
+		t2 = toupper(t2);
+
+		//Exit if user chose 'EE'
+		if (t1 == 'E' || t2 == 'E')
+		{
+			running = false;
+		}
+		//Else we execute the sorts with the two chosen methods
+		if (running)
+		{
+			//Get the users desired number of times to run
+			numberOfLoops = getResultSize();
+			cin.ignore();
+			cout << endl;
+
+			//Allocate memory for our results of the two methods
+			int* resultsSort1 = new int[numberOfLoops];
+			int* resultsSort2 = new int[numberOfLoops];
+		
+			//Allocate memory and fill our arrays for the two different sorting methods
+			int** sortArrays1 = generateArrays(numberOfLoops, SIZE);
+			int** sortArrays2 = copyArrays(sortArrays1, numberOfLoops, SIZE);
+		
+			//Sort through and output our data
+			for (int i = 0; i < numberOfLoops; i++)
+			{
+				cout << "Starting sort #" << i+1 << "..." << endl << endl;
+				
+				//Execute our two sorts and return the tics taken to sort
+				int tics1 = executeSort(t1, sortArrays1[i], SIZE);
+				int tics2 = executeSort(t2, sortArrays2[i], SIZE);
+
+				cout << parseChoice(t1) << " time " << tics1 << endl;
+				cout << parseChoice(t2) << " time " << tics2 << endl;
+
+				cout << endl;
+
+				//Store our data in our results array after outputting to screen
+				resultsSort1[i] = tics1;
+				resultsSort2[i] = tics2;
+			}
+			//Print out our final averages
+			cout << endl << "SORTING RESULTS" << endl;
+			cout << "-----------------------------------" << endl;
+			cout << "\t" << parseChoice(t1) << " " << averageResults(resultsSort1, numberOfLoops) << " tics on average" << endl;
+			cout << "\t" << parseChoice(t2) << " " << averageResults(resultsSort2, numberOfLoops) << " tics on average" << endl;
+			
+			//Deallocate memory of the arrays we used
+			delete resultsSort1;
+			delete resultsSort2;
+			delete sortArrays1;
+			delete sortArrays2;
+		
+		}
+	
+	
 	}
 	
-	
-	/*
-	int* myArray = new int[10];
-	for (int i = 0; i < 10; i++)
-	{
-		int randomNumber = rand() % 100 + 1;
-		myArray[i] = randomNumber;
-	}
-
-	printArray(myArray, 10);
-	cout << endl;
-	cout << verifySorted(myArray, 10);
-	cout << endl;
-
-	int* test1 = createCopy(myArray, 10);
-	int* test2 = createCopy(myArray, 10);
-	int* test3 = createCopy(myArray, 10);
-	int* test4 = createCopy(myArray, 10);
-	
-	int* bubbleSorted = bubbleSort(test1, 10);
-	printArray(bubbleSorted, 10);
-
-	cout << endl;
-	cout << verifySorted(bubbleSorted, 10);
-	cout << endl;
-
-	int* insertSorted = insertionSort(test2, 10);
-	printArray(insertSorted, 10);
-
-	cout << endl;
-
-	int* mergeSorted = mergeSort(test3, 0, 9);
-	printArray(mergeSorted, 10);
-
-	cout << endl;
-
-	quickSort(test4, 0, 9);
-	printArray(test4, 10);
-
-	cout << endl;
-	printArray(myArray, 10);
-	*/
-	
-	cout << "This program reached conclusion after " << elapsedTime << " tics of the clock..." << endl;
-
 	return 0;
 }
+
+

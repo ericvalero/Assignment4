@@ -1,62 +1,13 @@
-#include "barron-assn4.h"
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <string>
 #include <cmath>
-//create random arrays
-int* createCopy(int* arr, int size)
-{
-	int* newArray = new int[size];
-	for (int i = 0; i < size; i++)
-	{
-		newArray[i] = arr[i];
-	}
+#include "barron-assn4.h"
+#include "common.h"
 
-	return newArray;
+using namespace std;
 
-}
-
-//merge sort
-int* mergeSort(int* input, int p, int r)
-{
-	if (p < r)
-	{
-		int mid = floor((p + r) / 2);
-		mergeSort(input, p, mid);
-		mergeSort(input, mid + 1, r);
-		merge(input, p, r);
-	}
-	return input;
-}
-
-void merge(int* input, int p, int r)
-{
-	int mid = floor((p + r) / 2);
-	int i1 = 0;
-	int i2 = p;
-	int i3 = mid + 1;
-
-	// Temp array
-	int* temp = new int[r - p + 1];
-
-	// Merge in sorted form the 2 arrays
-	while (i2 <= mid && i3 <= r)
-		if (input[i2] < input[i3])
-			temp[i1++] = input[i2++];
-		else
-			temp[i1++] = input[i3++];
-
-	// Merge the remaining elements in left array
-	while (i2 <= mid)
-		temp[i1++] = input[i2++];
-
-	// Merge the remaining elements in right array
-	while (i3 <= r)
-		temp[i1++] = input[i3++];
-
-	// Move from temp array to master array
-	for (int i = p; i <= r; i++)
-		input[i] = temp[i - p];
-}
-
-//insertion sort
 int* insertionSort(int* arr, int size)
 {
 	int i, j, temp;
@@ -72,4 +23,121 @@ int* insertionSort(int* arr, int size)
 		arr[j + 1] = temp;
 	}
 	return arr;
+}
+
+int* createCopy(int* arr, int size)
+{
+	int* newArray = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		newArray[i] = arr[i];
+	}
+
+	return newArray;
+
+}
+
+void quickSort(int* arr, int left, int right) 
+{
+
+	int i = left, j = right;
+
+	int tmp;
+
+	int pivot = arr[(left + right) / 2];
+
+
+	while (i <= j) {
+
+		while (arr[i] < pivot)
+
+			i++;
+
+		while (arr[j] > pivot)
+
+			j--;
+
+		if (i <= j) {
+
+			tmp = arr[i];
+
+			arr[i] = arr[j];
+
+			arr[j] = tmp;
+
+			i++;
+
+			j--;
+
+		}
+
+	};
+
+
+	if (left < j)
+
+		quickSort(arr, left, j);
+
+	if (i < right)
+
+		quickSort(arr, i, right);
+
+}
+
+int** generateArrays(int count, int size)
+{
+
+	int** arrays = new int*[count];
+	
+	for (int i = 0; i < count; i++)
+	{
+		arrays[i] = new int[size];
+		for (int j = 0; j < size; j++)
+		{
+			int randomNumber = rand() % MAXIMUM + MINIMUM;
+			arrays[i][j] = randomNumber;
+		}
+	}
+
+	return arrays;
+
+}
+
+int** copyArrays(int **toCopy, int count, int size)
+{
+	int **copy = new int*[count];
+	for (int i = 0; i < count; i++)
+	{
+		copy[i] = createCopy(toCopy[i], size);
+	}
+	return copy;
+
+}
+
+bool properChoice(string s)
+{
+	char choice1 = s[0];
+	char choice2 = s[1];
+	choice1 = toupper(choice1);
+	choice2 = toupper(choice2);
+
+	if (choice1 != 'B' && choice1 != 'I' && choice1 != 'M' && choice1 != 'Q' && choice1 != 'E')
+	{
+		return false;
+	}
+
+	if (choice2 != 'B' && choice2 != 'I' && choice2 != 'M' && choice2 != 'Q' && choice2 != 'E')
+	{
+		return false;
+	}
+
+	return true;
+}
+
+int getResultSize() {
+	int answer;
+	cout << "Enter the number of times to repeat each sort (1 or more):";						// I changed this line to match the pdf
+	cout << endl;
+	cin >> answer;
+	return answer;
 }

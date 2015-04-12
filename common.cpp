@@ -1,14 +1,13 @@
 #include <iostream>
-using namespace std;
+#include <ctime>
+#include <cstdlib>
+#include <string>
+#include <cmath>
+#include "common.h"
+#include "valero-assn4.h"
+#include "barron-assn4.h"
 
-//common functions
-void printArray(int* arr, int size)
-{
-	for (int i = 0; i < size; i++)
-	{
-		cout << arr[i] << endl;
-	}
-}
+using namespace std;
 
 void printDisplay()
 {
@@ -18,6 +17,8 @@ void printDisplay()
 	cout << "M = Merge Sort" << endl;
 	cout << "Q = Quick Sort" << endl;
 	cout << "E = Exit program" << endl;
+	cout << endl << endl;
+	cout << "Enter two letter choices (or EE to exit) :";
 }
 
 bool verifySorted(int* arr, int size)
@@ -38,10 +39,115 @@ bool verifySorted(int* arr, int size)
 	}
 
 	return sorted;
+
+
+}
+
+string processInput()
+{
+	string s;
+	cin.ignore('\n');
+	getline(cin, s);
+	return s;
+}
+
+char* choices(string s)
+{
+	char* c = new char[2];
+	char sort1 = s[0];
+	char sort2 = s[1];
+	c[0] = sort1;
+	c[1] = sort2;
+	return c;
 }
 
 
-//create random arrays- Eric Valero
+int executeSort(char choice, int* arr, int size)
+{
+	int startTime = 0, endTime = 0, elapsedTime = 0;
+	int* testSorted = arr;
+	switch (choice)
+	{
+		case 'B':
+			startTime = clock();
+			cout << "Executing bubble sort" << endl;
+			testSorted = bubbleSort(testSorted, size);
+			if (verifySorted(testSorted, size))
+			{
+				cout << "Sorted validated!" << endl;
+				endTime = clock();
+			}
+			elapsedTime = endTime - startTime;
+			return elapsedTime;
+			break;
 
+		case 'I':
+			startTime = clock();
+			cout << "Executing insert sort" << endl;
+			testSorted = insertionSort(testSorted, size);
+			if (verifySorted(testSorted, size))
+			{
+				cout << "Sorted validated!" << endl;
+				endTime = clock();
+			}
+			elapsedTime = endTime - startTime;
+			return elapsedTime;
+			break;
 
-//display menu- Jose Barron
+		case 'M':
+			startTime = clock();
+			cout << "Executing merge sort" << endl;
+			testSorted = mergeSort(testSorted, 0, size-1);
+			if (verifySorted(testSorted, size))
+			{
+				cout << "Sorted validated!" << endl;
+				endTime = clock();
+			}
+			elapsedTime = endTime - startTime;
+			return elapsedTime;
+			break;
+
+		case 'Q':
+			startTime = clock();
+			cout << "Executing quick sort" << endl;
+			quickSort(testSorted, 0, size-1);
+			if (verifySorted(testSorted, size))
+			{
+				cout << "Sorted validated!" << endl;
+				endTime = clock();
+			}
+			elapsedTime = endTime - startTime;
+			return elapsedTime;
+			break;
+
+		default: cout << "INVALID INPUT ERROR" << endl;
+	
+	}
+
+}
+
+string parseChoice(char c)
+{
+	switch (c)
+	{
+	
+		case 'B':
+			return "Bubble Sort";
+			break;
+		case 'I':
+			return "Insertion Sort"; 
+			break;
+		case 'M':
+			return "Merge Sort";
+			break;
+		case 'Q':
+			return "Quick Sort";
+			break;
+	
+		default: cout << "ERROR INPUT ERROR" << endl;
+	
+
+	}
+	
+
+}
