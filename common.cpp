@@ -6,7 +6,23 @@
 #include "common.h"
 
 using namespace std;
+//*********************************************************************
+// FUNCTION: 	displayHeader
+// DESCRIPTION: prints a brief description of what the program does to the user
+// INPUT:	None
+// Parameters: 	None
+// File: 	None
+// OUTPUT:	a brief description of what the program does
+// Return Val:  None
+//**********************************************************************
 
+void displayHeader()
+{
+	cout << "This program will display a menu to the user asking them to select 2 choices" << endl;
+	cout << "The choices are 4 different types of sorts. After the user selects the choices," << endl;
+	cout << "The program will either exit (if that is what the user chooses) or it will asks" << endl;
+	cout << "The user how many times they would like to repeat each sort." << endl << endl;
+}
 //*********************************************************************
 // FUNCTION: 	printDisplay
 // DESCRIPTION: Prints a menu of possible choices to the user
