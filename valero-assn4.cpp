@@ -1,3 +1,22 @@
+//***************************************************************************
+//  CODE FILENAME:  Valero-assn4-funcs.cpp
+//  DESCRIPTION:    Functions used in sorting of arrays 
+//  TERM:	    Spring 8 weeks 2 2015
+/*			
+*/
+//  DESIGNER:       Eric Valero
+//  FUNCTIONS:    
+/*		    printArray-		prints out an array of numbers
+		    bubbleSort-		sorts array using the bubble sort algorithm
+		    merge-		sorts an array using the merge sort method
+		    mergeSort-		merges two arrays together, used in part of the merge sort sorting method
+		    averageResults-	Function to average out the number of tics from a results array
+		    
+					
+*/
+//***************************************************************************/
+
+
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -111,14 +130,13 @@ int* mergeSort(int* input, int pivot, int right)
 	return input;
 }
 //*********************************************************************
-// FUNCTION: 	mergeSort
-// DESCRIPTION: merges two arrays together, used in part of the merge sort sorting method
+// FUNCTION: 	averageResults
+// DESCRIPTION: Function to average out the number of tics from a results array
 // INPUT:
-// Parameters: 	*arr	- an array
+// Parameters: 	*arr	- array passed down from other functions
 //		size	- the size of the array
 // OUTPUT:
 // Return Val: 	average - the average value
-// calls to:	mergeSort, merge
 //**********************************************************************
 double averageResults(int* arr, int size)
 {
