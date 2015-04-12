@@ -19,6 +19,8 @@ bool verifySorted(int* arr, int size);
 //Function to display the user menu
 void printDisplay();
 
+//Function that displays a brief description of what the program does
+void displayHeader();
 //Function to process the users input
 string processInput();
 
