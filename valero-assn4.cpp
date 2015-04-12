@@ -56,68 +56,85 @@ int* bubbleSort(int* arr, int size)
 
 //*********************************************************************
 // FUNCTION: 	merge
-// DESCRIPTION: sorts array using the insertion sort algorithm
+// DESCRIPTION: sorts an array using the merge sort method
 // INPUT:
-// Parameters: 	*arr	- an array with random values
-//		size	- the size of the array
-// OUTPUT:
-// Return Val: 	arr	- the array sorted using insertion sort
+// Parameters: 	*input	- array
+//		pivot	- the starting point for the sorting
+//		right	- the furthest right element of the array
 //**********************************************************************
-void merge(int* input, int p, int r)
+void merge(int* input, int pivot, int right)
 {
-	int mid = floor((p + r) / 2);
-	int i1 = 0;
-	int i2 = p;
-	int i3 = mid + 1;
+	int mid = floor((pivot + right) / 2);					// gives mid a value
+	int i1 = 0;								// i1 is set to first element
+	int i2 = pivot;								// i2 is set to pivot
+	int i3 = mid + 1;							// i3 is to the right of mid
 
-	// Temp array
-	int* temp = new int[r - p + 1];
-
-	// Merge in sorted form the 2 arrays
-	while (i2 <= mid && i3 <= r)
+	int* temp = new int[right - pivot + 1];					// Temp array
+	
+	while (i2 <= mid && i3 <= right)					// Merge in sorted form the 2 arrays
 		if (input[i2] < input[i3])
 			temp[i1++] = input[i2++];
 		else
 			temp[i1++] = input[i3++];
 
-	// Merge the remaining elements in left array
-	while (i2 <= mid)
+	while (i2 <= mid)							// Merge the remaining elements in left array
 		temp[i1++] = input[i2++];
 
-	// Merge the remaining elements in right array
-	while (i3 <= r)
+	while (i3 <= right)							// Merge the remaining elements in right array
 		temp[i1++] = input[i3++];
 
-	// Move from temp array to master array
-	for (int i = p; i <= r; i++)
-		input[i] = temp[i - p];
+	for (int i = pivot; i <= right; i++)					// Move from temp array to master array
+		input[i] = temp[i - pivot];
 }
 
-int* mergeSort(int* input, int p, int r)
+//*********************************************************************
+// FUNCTION: 	mergeSort
+// DESCRIPTION: merges two arrays together, used in part of the merge sort sorting method
+// INPUT:
+// Parameters: 	*input	- an array with random values
+//		pivot	- the starting point for the sort
+//		right	- the last element in the array
+// OUTPUT:
+// Return Val: 	input	- sorted merged array
+// calls to:	mergeSort, merge
+//**********************************************************************
+int* mergeSort(int* input, int pivot, int right)
 {
-	if (p < r)
+	if (pivot < right)								// if starting point is greater then last element
 	{
-		int mid = floor((p + r) / 2);
-		mergeSort(input, p, mid);
-		mergeSort(input, mid + 1, r);
-		merge(input, p, r);
+		int mid = floor((pivot + right) / 2);					// mid is given the value
+		mergeSort(input, pivot, mid);						// mergeSort calls itself to sort and merge
+		mergeSort(input, mid + 1, right);
+		merge(input, pivot, right);					
 	}
 
 	return input;
 }
-
+//*********************************************************************
+// FUNCTION: 	mergeSort
+// DESCRIPTION: merges two arrays together, used in part of the merge sort sorting method
+// INPUT:
+// Parameters: 	*arr	- an array
+//		size	- the size of the array
+// OUTPUT:
+// Return Val: 	average - the average value
+// calls to:	mergeSort, merge
+//**********************************************************************
 double averageResults(int* arr, int size)
 {
-	double total = 0.0;
-	for (int i = 0; i < size; i++)
+	int average;
+	double total = 0.0;							//total initialized
+	for (int i = 0; i < size; i++)						
 	{
-		total += arr[i];
+		total += arr[i];						// total is equal to total plus array value
 	}
 
-	return total / size;
+	average = total / size;				
+	return average;								// returns average
 
 
 }
+
 
 double** results(int arraySize) {
 	double** results = new double*[2];
