@@ -24,6 +24,8 @@ int** generateArrays(int count, int size);
 //Function that creates an identical copy of the generated arrays for use for both sorts
 int** copyArrays(int **toCopy, int count, int size);
 
+//Function to ensure one of the 5 letters options is input
 bool properChoice(string);
 
+// asks the user how many times to repeat the sort
 int getResultSize();
