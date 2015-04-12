@@ -45,13 +45,13 @@ int main()
 
 		//Split our input string into two upper case characters representing the users two sort choices
 		char* splitChoice = choices(sortChoice);
-		char t1 = splitChoice[0];
-		char t2 = splitChoice[1];
-		t1 = toupper(t1);
-		t2 = toupper(t2);
+		char choice1 = splitChoice[0];
+		char choice2 = splitChoice[1];
+		choice1 = toupper(choice1);
+		choice2 = toupper(choice2);
 
 		//Exit if user chose 'EE'
-		if (t1 == 'E' || t2 == 'E')
+		if (choice1 == 'E' || choice2 == 'E')
 		{
 			running = false;
 		}
@@ -74,14 +74,14 @@ int main()
 			//Sort through and output our data
 			for (int i = 0; i < numberOfLoops; i++)
 			{
-				cout << "Starting sort #" << i+1 << "..." << endl << endl;
+				cout << "Starting sort #" << i + 1 << "..." << endl << endl;
 				
 				//Execute our two sorts and return the tics taken to sort
-				int tics1 = executeSort(t1, sortArrays1[i], SIZE);
-				int tics2 = executeSort(t2, sortArrays2[i], SIZE);
+				int tics1 = executeSort(choice1, sortArrays1[i], SIZE);
+				int tics2 = executeSort(choice2, sortArrays2[i], SIZE);
 
-				cout << parseChoice(t1) << " time " << tics1 << endl;
-				cout << parseChoice(t2) << " time " << tics2 << endl;
+				cout << parseChoice(choice1) << " time " << tics1 << endl;
+				cout << parseChoice(choice2) << " time " << tics2 << endl;
 
 				cout << endl;
 
@@ -92,8 +92,8 @@ int main()
 			//Print out our final averages
 			cout << endl << "SORTING RESULTS" << endl;
 			cout << "-----------------------------------" << endl;
-			cout << "\t" << parseChoice(t1) << " " << averageResults(resultsSort1, numberOfLoops) << " tics on average" << endl;
-			cout << "\t" << parseChoice(t2) << " " << averageResults(resultsSort2, numberOfLoops) << " tics on average" << endl;
+			cout << "\t" << parseChoice(choice1) << " " << averageResults(resultsSort1, numberOfLoops) << " tics on average" << endl;
+			cout << "\t" << parseChoice(choice2) << " " << averageResults(resultsSort2, numberOfLoops) << " tics on average" << endl;
 			
 			//Deallocate memory of the arrays we used
 			delete resultsSort1;
@@ -108,5 +108,4 @@ int main()
 	
 	return 0;
 }
-
 
