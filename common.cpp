@@ -1,11 +1,31 @@
+//***************************************************************************
+//  CODE FILENAME:  BarronValero-assn4-common.cpp
+//  DESCRIPTION:    Common Functions used in sorting of arrays 
+//  TERM:	    Spring 8 weeks 2 2015
+/*			
+*/
+//  DESIGNER:       Eric Valero / Jose Barron
+//  FUNCTIONS:    
+/*		 
+		    displayHeader-		Displays a quick description of what the program does
+		    printDisplay-		Displays a menu to the user to make a selection
+		    verifiySorted		verifies array is sorted in ascending order
+		    choices			It takes the string inputted by the user, and splits it into 2 characters
+		    parseChoice			takes the choice made by the user and assigns it a string value
+		    executeSort			calls other functions based on the users selection
+*/
+//***************************************************************************
+
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
 #include <string>
 #include <cmath>
 #include "common.h"
-p
+
 using namespace std;
+
+
 //*********************************************************************
 // FUNCTION: 	displayHeader
 // DESCRIPTION: prints a brief description of what the program does to the user
@@ -47,7 +67,7 @@ void printDisplay()
 
 //*********************************************************************
 // FUNCTION: 	verifySorted
-// DESCRIPTION: verrifies array is sorted in ascending order
+// DESCRIPTION: verifies array is sorted in ascending order
 // INPUT:
 // Parameters:	
 //		*arr - an array of numbers that should be sorted in ascending order
