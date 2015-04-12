@@ -1,3 +1,20 @@
+//***************************************************************************
+//  CODE FILENAME:  Barron-assn4-funcs.cpp
+//  DESCRIPTION:    Functions used in order to sort arrays
+/*  TERM:	    Spring 8 week 2 2015		
+*/
+//  DESIGNER:       Jose Barron
+//  FUNCTIONS:    
+/*			insertionSort-	sorts array using the insertion sort algorithm
+			createCopy-	creates a copy of the array that was created earlier
+			quickSort-	sorts the array that is passed to it using the quick sort algorithm
+			generateArrays-	creates an array using rand() % HighLimit + lowLimit command
+			copyArrays-	Description of what the function does
+			getResultSize-	asks the user for the number of times to repeat each sort
+			properChoice-	ensures that one of the 5 letters options is input
+*/
+//***************************************************************************/
+
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -42,7 +59,7 @@ int* insertionSort(int* arr, int size)
 // Parameters:	*arr 	- an array with random values
 //		size	- size of the array
 // OUTPUT:
-// Return Val: 	newArray
+// Return Val: 	newArray	- new copy of array created
 //**********************************************************************
 int* createCopy(int* arr, int size)
 {
@@ -58,7 +75,7 @@ int* createCopy(int* arr, int size)
 
 
 //*********************************************************************
-// FUNCTION: 	qucikSort
+// FUNCTION: 	quickSort
 // DESCRIPTION: sorts the array that is passed to it using the quick sort algorithm
 // INPUT:
 // Parameters: 	*arr	-an unsorted array holding random values
