@@ -123,24 +123,45 @@ int** generateArrays(int count, int size)
 
 }
 
+//*********************************************************************
+// FUNCTION: 	copyArrays
+// DESCRIPTION: Description of what the function does
+// INPUT:
+// Parameters: 	**toCopy	- array to copy
+//		count		- counter for array
+//		size		- size of array
+// Return Val: 	copy		- new array copy
+//calls to:	createCopy
+//**********************************************************************
 int** copyArrays(int **toCopy, int count, int size)
 {
-	int **copy = new int*[count];
-	for (int i = 0; i < count; i++)
+	int **copy = new int*[count];						// new array is created
+	for (int i = 0; i < count; i++)						// every value is iterated
 	{
-		copy[i] = createCopy(toCopy[i], size);
+		copy[i] = createCopy(toCopy[i], size);				// every vlue of array is passed to createCopy
 	}
 	return copy;
 
 }
 
-bool properChoice(string s)
-{
-	char choice1 = s[0];
-	char choice2 = s[1];
-	choice1 = toupper(choice1);
-	choice2 = toupper(choice2);
 
+//*********************************************************************
+// FUNCTION: 	properChoice
+// DESCRIPTION: ensures that one of the 5 letters options is input
+// INPUT:
+// Parameters: 	input
+// Return Val: 	true: if choice is valid
+//		false: if choice is invalid
+//**********************************************************************
+
+bool properChoice(string input)
+{											//string input is broken down into 2 chars
+	char choice1 = input[0];							// choice 1 = first letter
+	char choice2 = input[1];							// choice 2 = second letter
+	choice1 = toupper(choice1);							// converts inputs to uppercase
+	choice2 = toupper(choice2);
+											// if either choice isnt B, I, M, Q, or E
+											// the boolean value returns false
 	if (choice1 != 'B' && choice1 != 'I' && choice1 != 'M' && choice1 != 'Q' && choice1 != 'E')
 	{
 		return false;
@@ -151,13 +172,20 @@ bool properChoice(string s)
 		return false;
 	}
 
-	return true;
+	return true;									// if valid input the boolean value is true
 }
 
+//*********************************************************************
+// FUNCTION: 	getResultSize
+// DESCRIPTION: asks the user for the number of times to repeat each sort
+// INPUT:	answer	- the number of times to repeat each sort
+// Parameters: 	none
+// Return Val: 	answer	- the number of times to repeat each sort
+//**********************************************************************
 int getResultSize() {
 	int answer;
-	cout << "Enter the number of times to repeat each sort (1 or more):";						// I changed this line to match the pdf
-	cout << endl;
-	cin >> answer;
-	return answer;
+	cout << "Enter the number of times to repeat each sort (1 or more):";		//asks the user for input
+	cout << endl;									// takes input in next line
+	cin >> answer;									// user input
+	return answer;	
 }
