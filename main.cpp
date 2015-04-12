@@ -7,6 +7,18 @@
 
 using namespace std;
 
+//*********************************************************************
+// FUNCTION: 	main
+// DESCRIPTION: this function primarily calls other functions to perform there jobs
+//		the end result of this is arrays are sorted using 2 different sort methods,
+//		however many times the user decided to perform the sort
+// INPUT:
+// Parameters: 	none
+// Return Val:  no return value
+// calls to:	properChoice, choices, getResultSize, generateArrays, copyArrays, executeSort
+//		parseChoice, averageResults, printDisplay, 
+//**********************************************************************
+
 int main()
 {
 
