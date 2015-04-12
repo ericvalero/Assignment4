@@ -7,33 +7,62 @@
 
 using namespace std;
 
+
+//*********************************************************************
+// FUNCTION: 	printArray
+// DESCRIPTION: prints array
+// INPUT:
+// Parameters: 	*arr	- an array with random values
+//		size	- the size of the array
+// OUTPUT:
+// Return Value: none
+//**********************************************************************
 void printArray(int* arr, int size)
 {
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)					// recursive loop to go through all the values
 	{
-		cout << arr[i] << endl;
+		cout << arr[i] << endl;					// print out of the array
 	}
 }
 
+
+//*********************************************************************
+// FUNCTION: 	bubbleSort
+// DESCRIPTION: sorts an array using the bubble sort algorithm
+// INPUT:
+// Parameters: 	*arr	- an array with random values
+//		size	- the size of the array
+// OUTPUT:
+// Return Val: 	arr	- the array sorted using insertion sort
+//**********************************************************************
 int* bubbleSort(int* arr, int size)
 {
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)					
 	{
-		for (int j = i + 1; j < size; j++)
+		for (int j = i + 1; j < size; j++)				// starts at 2nd element
 		{
-			if (arr[j] < arr[i])
-			{
-				int temp = arr[i];
+			if (arr[j] < arr[i])					// if right element is greater than left
+			{							// temp is used to swap
+				int temp = arr[i];				//swaps entries in array
 				arr[i] = arr[j];
 				arr[j] = temp;
 			}
 		}
 	}
 
-	return arr;
+	return arr;								// returns sorted array
 
 }
 
+//*********************************************************************
+// FUNCTION: 	merge
+// DESCRIPTION: sorts array using the insertion sort algorithm
+// INPUT:
+// Parameters: 	*arr	- an array with random values
+//		size	- the size of the array
+// OUTPUT:
+// Return Val: 	arr	- the array sorted using insertion sort
+//**********************************************************************
 void merge(int* input, int p, int r)
 {
 	int mid = floor((p + r) / 2);
