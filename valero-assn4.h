@@ -6,7 +6,7 @@
 */
 //  DESIGNER:       Eric Valero
 //  FUNCTIONS:    
-/*		  printArray-		  prints out an array of numbers
+/*		 
 		    bubbleSort-		  sorts array using the bubble sort algorithm
 		    merge-		      sorts an array using the merge sort method
 		    mergeSort-		  merges two arrays together, used in part of the merge sort sorting method
@@ -23,9 +23,6 @@
 #include <cmath>
 
 //FUNCTION PROTOTYPES
-
-//Function to print out any array of numbers
-void printArray(int* arr, int size);
 
 //Function that sorts an array using the bubble sort method
 int* bubbleSort(int* arr, int size);
