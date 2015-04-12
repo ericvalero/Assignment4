@@ -87,8 +87,11 @@ string parseChoice(char c)
 
 int executeSort(char choice, int* arr, int size)
 {
-	int startTime = 0, endTime = 0, elapsedTime = 0;
+	int startTime = 0;
+	int endTime = 0;
+	int elapsedTime = 0;
 	int* testSorted = arr;
+	
 	switch (choice)
 	{
 		case 'B':
