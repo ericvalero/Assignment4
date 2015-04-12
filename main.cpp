@@ -1,3 +1,21 @@
+
+//  CODE FILENAME:  BarronValero-assn4-main.cpp
+//  Spring 8 week 2 2015
+//  DESCRIPTION:    This is the main function, this particular file simply calls multiple other
+//		    functions that will perform there jobs.
+//  DESIGNER:       Jose Barron / Eric Valero
+//  FUNCTIONS:      			
+//				        properChoice	- Function to ensure one of the 5 letters options is input
+//					choices		- Function that takes a string and returns the two sort method choices
+//					getResultSize	- Fucntion that asks the user for the number of times to repeat each sort
+//					generateArrays	- Function that generates number of random arrays based on user's choice returns an array of arrays
+//					copyArrays	- Function that creates an identical copy of the generated arrays for use for both sorts
+//					executeSort	- Function that executes a sort based on a character input and returns the number of tics it took to run
+//					parseChoice	- Function to return a string based on the sort char passed in
+//					averageResult	- Function to average out the number of tics from a results array
+//					printDisplay	- Function to display the user menu
+//***************************************************************************/
+
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -16,7 +34,7 @@ using namespace std;
 // Parameters: 	none
 // Return Val:  no return value
 // calls to:	properChoice, choices, getResultSize, generateArrays, copyArrays, executeSort
-//		parseChoice, averageResults, printDisplay, 
+//		parseChoice, averageResults, printDisplay
 //**********************************************************************
 
 int main()
