@@ -13,10 +13,10 @@ void printArray(int* arr, int size);
 int* bubbleSort(int* arr, int size);
 
 //Function that sorts an array using the merge sort method
-int* mergeSort(int* input, int p, int r);
+int* mergeSort(int* input, int pivot, int right);
 
 //Function that merges two arrays together, used in part of the merge sort sorting method
-void merge(int* input, int p, int r);
+void merge(int* input, int pivot, int right);
 
 //Function to average out the number of tics from a results array
 double averageResults(int* arr, int size);
