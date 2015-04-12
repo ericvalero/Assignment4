@@ -7,34 +7,52 @@
 
 using namespace std;
 
+//*********************************************************************
+// FUNCTION: 	insertionSort
+// DESCRIPTION: sorts array using the insertion sort algorithm
+// INPUT:
+// Parameters: 	*arr	- an array with random values
+//		size	- the size of the array
+// OUTPUT:
+// Return Val: 	arr	- the array sorted using insertion sort
+//**********************************************************************
 int* insertionSort(int* arr, int size)
 {
-	int i;
-	int j;
-	int temp;
-	for (i = 1; i < size; i++)
-	{
-		temp = arr[i];
-		j = i - 1;
-		while (temp<arr[j] && j >= 0)
+	int i;								//used for sorting
+	int j;								//used for sorting
+	int temp;							//used for sorting
+	for (i = 1; i < size; i++)					// sorted initialized to 1, because first 
+	{								//element is sorted
+		temp = arr[i];					
+		j = i - 1;						// first entry in the array
+		while (temp < arr[j] && j >= 0)				// goes until the entry to the left is smaller
 		{
-			arr[j + 1] = arr[j];
-			--j;
+			arr[j + 1] = arr[j];				// shifts all values to the right
+			--j;						// updates counter to move left
 		}
-		arr[j + 1] = temp;
+		arr[unsorted + 1] = temp;				// inserts value into sorted portion of array
 	}
-	return arr;
+	return arr;							// returns sorted array
 }
 
+//*********************************************************************
+// FUNCTION: 	createCopy
+// DESCRIPTION: creates a copy of the array that was created earlier
+// INPUT:
+// Parameters:	*arr 	- an array with random values
+//		size	- size of the array
+// OUTPUT:
+// Return Val: 	newArray
+//**********************************************************************
 int* createCopy(int* arr, int size)
 {
-	int* newArray = new int[size];
-	for (int i = 0; i < size; i++)
-	{
+	int* newArray = new int[size];					// a copy of the array is made
+	for (int i = 0; i < size; i++)					// for loop is used to make every
+	{								// value equal each other
 		newArray[i] = arr[i];
 	}
 
-	return newArray;
+	return newArray;						// new array is returned.
 
 }
 
