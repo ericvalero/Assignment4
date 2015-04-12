@@ -1,3 +1,19 @@
+//***************************************************************************
+//  CODE FILENAME:  Barron-assn4-funcs.h
+//  DESCRIPTION:    Function headers for Barron-assn4-funcs.cpp
+/*  TERM:	          Spring 8 week 2 2015		
+*/
+//  DESIGNER:       Jose Barron
+//  FUNCTIONS:      Only the function prototypes will be found in this file
+/*		insertionSort-	sorts array using the insertion sort algorithm
+			createCopy-	creates a copy of the array that was created earlier
+			quickSort-	sorts the array that is passed to it using the quick sort algorithm
+			generateArrays-	creates an array using rand() % HighLimit + lowLimit command
+			copyArrays-	Description of what the function does
+			getResultSize-	asks the user for the number of times to repeat each sort
+			properChoice-	ensures that one of the 5 letters options is input
+*/
+//***************************************************************************/
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
