@@ -34,6 +34,7 @@ using namespace std;
 //		size	- the size of the array
 // OUTPUT:
 // Return Val: 	arr	- the array sorted using insertion sort
+// IMPLEMENTED BY:	Eric Valero
 //**********************************************************************
 int* bubbleSort(int* arr, int size)
 {
@@ -61,6 +62,7 @@ int* bubbleSort(int* arr, int size)
 // Parameters: 	*input	- array
 //		pivot	- the starting point for the sorting
 //		right	- the furthest right element of the array
+// IMPLEMENTED BY:	Eric Valero
 //**********************************************************************
 void merge(int* input, int pivot, int right)
 {
@@ -97,6 +99,7 @@ void merge(int* input, int pivot, int right)
 // OUTPUT:
 // Return Val: 	input	- sorted merged array
 // calls to:	mergeSort, merge
+// IMPLEMENTED BY:	Eric Valero
 //**********************************************************************
 int* mergeSort(int* input, int pivot, int right)
 {
@@ -118,6 +121,7 @@ int* mergeSort(int* input, int pivot, int right)
 //		size	- the size of the array
 // OUTPUT:
 // Return Val: 	average - the average value
+// IMPLEMENTED BY:	Eric Valero
 //**********************************************************************
 double averageResults(int* arr, int size)
 {
