@@ -9,8 +9,10 @@ using namespace std;
 
 int* insertionSort(int* arr, int size)
 {
-	int i, j, temp;
-	for (i = 1; i<size; i++)
+	int i;
+	int j;
+	int temp;
+	for (i = 1; i < size; i++)
 	{
 		temp = arr[i];
 		j = i - 1;
@@ -39,7 +41,8 @@ int* createCopy(int* arr, int size)
 void quickSort(int* arr, int left, int right) 
 {
 
-	int i = left, j = right;
+	int i = left;
+	int j = right;
 
 	int tmp;
 
