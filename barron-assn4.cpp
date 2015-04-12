@@ -56,32 +56,45 @@ int* createCopy(int* arr, int size)
 
 }
 
+
+//*********************************************************************
+// FUNCTION: 	qucikSort
+// DESCRIPTION: sorts the array that is passed to it using the quick sort algorithm
+// INPUT:
+// Parameters: 	*arr	-an unsorted array holding random values
+//		left	- furthest left value
+//		right 	- furthest right value
+// Parameters:  *arr	- an array not fully sorted
+//		left	- the furthest left value
+//		right	- the furthest right value
+// CALLS TO: 	quickSort
+//**********************************************************************
 void quickSort(int* arr, int left, int right) 
 {
 
-	int i = left;
-	int j = right;
-	int tmp;
-	int pivot = arr[(left + right) / 2];
+	int i = left;								// i is set to the left value
+	int j = right;								// j is set to the right value
+	int tmp;								// temp is used for sorting purposes
+	int pivot = arr[(left + right) / 2];					// the point where we start sorting
 	
-	while (i <= j) {
+	while (i <= j) {							// while the left side is less than or equal to the right
 
-		while (arr[i] < pivot)
-			i++;
+		while (arr[i] < pivot)						// while left is less than the starting point
+			i++;							// move on one element to the right
 
-		while (arr[j] > pivot)
-			j--;
+		while (arr[j] > pivot)						// while the right side is greater than the start
+			j--;							// move one element to the left
 
-		if (i <= j) {
-			tmp = arr[i];
-			arr[i] = arr[j];
+		if (i <= j) {							// if the left side is less than or equal to the right
+			tmp = arr[i];						// temp value is given of the left element
+			arr[i] = arr[j];					// 
 			arr[j] = tmp;
 			i++;
 			j--;
 		}
 	};
 	
-	if (left < j)
+	if (left < j)								// calls itself until the array is sorted
 		quickSort(arr, left, j);
 
 	if (i < right)
