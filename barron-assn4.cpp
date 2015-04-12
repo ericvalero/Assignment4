@@ -86,11 +86,11 @@ void quickSort(int* arr, int left, int right)
 			j--;							// move one element to the left
 
 		if (i <= j) {							// if the left side is less than or equal to the right
-			tmp = arr[i];						// temp value is given of the left element
-			arr[i] = arr[j];					// 
+			tmp = arr[i];						// use tmp to hold value for left side
+			arr[i] = arr[j];					// swap occurs
 			arr[j] = tmp;
-			i++;
-			j--;
+			i++;							// move left end to the right one spot
+			j--;							// move right end to the left on spot
 		}
 	};
 	
