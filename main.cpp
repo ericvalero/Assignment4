@@ -14,6 +14,7 @@
 //					parseChoice	- Function to return a string based on the sort char passed in
 //					averageResult	- Function to average out the number of tics from a results array
 //					printDisplay	- Function to display the user menu
+//					displayHeader	- Displays a brief description of what the program does
 //***************************************************************************/
 
 #include <iostream>
@@ -34,12 +35,13 @@ using namespace std;
 // Parameters: 	none
 // Return Val:  no return value
 // calls to:	properChoice, choices, getResultSize, generateArrays, copyArrays, executeSort
-//		parseChoice, averageResults, printDisplay
+//		parseChoice, averageResults, printDisplay, displayHeader
 //**********************************************************************
 
 int main()
-{
-
+{	
+	displayHeader();
+	
 	//Seed our random number generator in order to verify random data 
 	srand(time(NULL));
 
