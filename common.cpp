@@ -132,6 +132,8 @@ string parseChoice(char c)
 //	Parameters: choice- user choice
 //				arr- array to be sorted
 //				size- size of array
+//OUTPUT:
+//	Return Val: elapsed time since last sort
 //------------------------------------------------------------------------
 int executeSort(char choice, int* arr, int size)
 {

@@ -131,14 +131,10 @@ int* mergeSort(int* input, int p, int r)
 //------------------------------------------------------------------------
 double averageResults(int* arr, int size)
 {
-<<<<<<< HEAD
-	double total = 0.0;
-	for (int i = 0; i < size; i++)
-=======
+
 	double average;
 	double total = 0.0;							//total initialized
 	for (int i = 0; i < size; i++)						
->>>>>>> 4fd455e595350541df79f42944e64331caff9c53
 	{
 		total += arr[i];
 	}
