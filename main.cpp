@@ -22,6 +22,7 @@
 #include <cstdlib>
 #include <string>
 #include <cmath>
+#include <iomanip>
 #include "common.h"
 
 using namespace std;
@@ -122,6 +123,8 @@ int main()
 				resultsSort2[i] = tics2;
 			}
 			//Print out our final averages
+			cout << fixed << showpoint;
+    			cout << setprecision(1);
 			cout << endl << "SORTING RESULTS" << endl;
 			cout << "-----------------------------------" << endl;
 			cout << "\t" << parseChoice(choice1) << " " << averageResults(resultsSort1, numberOfLoops) << " tics on average" << endl;
