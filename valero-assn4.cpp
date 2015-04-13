@@ -139,8 +139,9 @@ double averageResults(int* arr, int size)
 	{
 		total += arr[i];
 	}
-
-	return total / size;
+	
+	average = total / static_cast<double>(size);
+	return average;
 
 
 }
