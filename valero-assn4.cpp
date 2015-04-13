@@ -23,6 +23,7 @@ using namespace std;
 //INPUT:
 //	Parameters: arr- an array
 //				size- size of arr
+//NOTE: REDACTED- debugging only
 //-------------------------------------------------------------------------
 void printArray(int* arr, int size)
 {
