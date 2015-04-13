@@ -1,22 +1,13 @@
-//***************************************************************************
-//  CODE FILENAME:  Valero-assn4-funcs.cpp
-//  DESCRIPTION:    Functions used in sorting of arrays 
-//  TERM:	    Spring 8 weeks 2 2015
-/*			
-*/
-//  DESIGNER:       Eric Valero
-//  FUNCTIONS:    
-/*		 
-		    bubbleSort-		sorts array using the bubble sort algorithm
-		    merge-		sorts an array using the merge sort method
-		    mergeSort-		merges two arrays together, used in part of the merge sort sorting method
-		    averageResults-	Function to average out the number of tics from a results array
-		    
-					
-*/
-//***************************************************************************/
-
-
+//-------------------------------------------------------------------------
+//FILE: valero-assn3.cpp
+//DESCRIPTION: files developed by Eric Valero
+//Functions:	print array- prints the array its passed
+//				bubble sort- performs bubble sort
+//				merge- merges two arrays
+//				merge sort- performs merge sort
+//				average results- finds average of results array
+//				results- contains results
+//-------------------------------------------------------------------------
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -26,119 +17,139 @@
 
 using namespace std;
 
-//*********************************************************************
-// FUNCTION: 	bubbleSort
-// DESCRIPTION: sorts an array using the bubble sort algorithm
-// INPUT:
-// Parameters: 	*arr	- an array with random values
-//		size	- the size of the array
-// OUTPUT:
-// Return Val: 	arr	- the array sorted using insertion sort
-// IMPLEMENTED BY:	Eric Valero
-//**********************************************************************
+//-------------------------------------------------------------------------
+//FUNCTION: printArray
+//DESCRIPTION: prints the results of an array
+//INPUT:
+//	Parameters: arr- an array
+//				size- size of arr
+//-------------------------------------------------------------------------
+void printArray(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << endl;
+	}
+}
+
+//-------------------------------------------------------------------------
+//FUNCTION: bubbleSort
+//DESCRIPTION: performs bubble sort
+//INPUT:
+//	Parameters: arr- array to sort
+//				size- size of array
+//-------------------------------------------------------------------------
 int* bubbleSort(int* arr, int size)
 {
-	for (int i = 0; i < size; i++)					
+	//bubble sort outer loop runs through unsorted array sections
+	for (int i = 0; i < size; i++)
 	{
-		for (int j = i + 1; j < size; j++)				// starts at 2nd element
+		//inner loop allows bubbling
+		for (int j = i + 1; j < size; j++)
 		{
-			if (arr[j] < arr[i])					// if right element is greater than left
-			{							// temp is used to swap
-				int temp = arr[i];				//swaps entries in array
+			if (arr[j] < arr[i])
+			{
+				int temp = arr[i];
 				arr[i] = arr[j];
 				arr[j] = temp;
 			}
 		}
 	}
 
-	return arr;								// returns sorted array
+	return arr;
 
 }
 
-//*********************************************************************
-// FUNCTION: 	merge
-// DESCRIPTION: sorts an array using the merge sort method
-// INPUT:
-// Parameters: 	*input	- array
-//		pivot	- the starting point for the sorting
-//		right	- the furthest right element of the array
-// IMPLEMENTED BY:	Eric Valero
-//**********************************************************************
-void merge(int* input, int pivot, int right)
+//------------------------------------------------------------------------
+//FUNCTION: merge
+//DESCRIPTION: merges two arrays
+//INPUT:
+//	Parameters: input- pointer to an integer array
+//				p- bottom of array
+//				r- top of array
+//------------------------------------------------------------------------
+void merge(int* input, int p, int r)
 {
-	int mid = floor((pivot + right) / 2);					// gives mid a value
-	int i1 = 0;								// i1 is set to first element
-	int i2 = pivot;								// i2 is set to pivot
-	int i3 = mid + 1;							// i3 is to the right of mid
+	int mid = floor((p + r) / 2);
+	int i1 = 0;
+	int i2 = p;
+	int i3 = mid + 1;
 
-	int* temp = new int[right - pivot + 1];					// Temp array
-	
-	while (i2 <= mid && i3 <= right)					// Merge in sorted form the 2 arrays
+	// Temp array
+	int* temp = new int[r - p + 1];
+
+	// Merge in sorted form the 2 arrays
+	while (i2 <= mid && i3 <= r)
 		if (input[i2] < input[i3])
 			temp[i1++] = input[i2++];
 		else
 			temp[i1++] = input[i3++];
 
-	while (i2 <= mid)							// Merge the remaining elements in left array
+	// Merge the remaining elements in left array
+	while (i2 <= mid)
 		temp[i1++] = input[i2++];
 
-	while (i3 <= right)							// Merge the remaining elements in right array
+	// Merge the remaining elements in right array
+	while (i3 <= r)
 		temp[i1++] = input[i3++];
 
-	for (int i = pivot; i <= right; i++)					// Move from temp array to master array
-		input[i] = temp[i - pivot];
+	// Move from temp array to master array
+	for (int i = p; i <= r; i++)
+		input[i] = temp[i - p];
 }
 
-//*********************************************************************
-// FUNCTION: 	mergeSort
-// DESCRIPTION: merges two arrays together, used in part of the merge sort sorting method
-// INPUT:
-// Parameters: 	*input	- an array with random values
-//		pivot	- the starting point for the sort
-//		right	- the last element in the array
-// OUTPUT:
-// Return Val: 	input	- sorted merged array
-// calls to:	mergeSort, merge
-// IMPLEMENTED BY:	Eric Valero
-//**********************************************************************
-int* mergeSort(int* input, int pivot, int right)
+//-----------------------------------------------------------------------
+//FUNCTION: mergeSort
+//DESCRIPTION: performs merge sort
+//INPUT:
+//	Parameters: input- pointer to int array
+//				p- bottom of array
+//				r- top of array
+//RETURN VAL: input- sorted array
+//CALLS TO: merge
+//-----------------------------------------------------------------------
+int* mergeSort(int* input, int p, int r)
 {
-	if (pivot < right)								// if starting point is greater then last element
+	if (p < r)
 	{
-		int mid = floor((pivot + right) / 2);					// mid is given the value
-		mergeSort(input, pivot, mid);						// mergeSort calls itself to sort and merge
-		mergeSort(input, mid + 1, right);
-		merge(input, pivot, right);					
+		int mid = floor((p + r) / 2);
+		mergeSort(input, p, mid);
+		mergeSort(input, mid + 1, r);
+		merge(input, p, r);
 	}
 
 	return input;
 }
-//*********************************************************************
-// FUNCTION: 	averageResults
-// DESCRIPTION: Function to average out the number of tics from a results array
-// INPUT:
-// Parameters: 	*arr	- array passed down from other functions
-//		size	- the size of the array
-// OUTPUT:
-// Return Val: 	average - the average value
-// IMPLEMENTED BY:	Eric Valero
-//**********************************************************************
+
+//------------------------------------------------------------------------
+//FUNCTION: averageResults
+//DESCRIPTION: finds average of all values in an array
+//INPUT:
+//	Parameters: arr- input array
+//				size- size of arr
+//RETURN VAL: average value
+//------------------------------------------------------------------------
 double averageResults(int* arr, int size)
 {
-	int average;
-	double total = 0.0;							//total initialized
-	for (int i = 0; i < size; i++)						
+	double total = 0.0;
+	for (int i = 0; i < size; i++)
 	{
-		total += arr[i];						// total is equal to total plus array value
+		total += arr[i];
 	}
 
-	average = total / size;				
-	return average;								// returns average
+	return total / size;
 
 
 }
 
-
+//------------------------------------------------------------------------
+//FUNCTION: results
+//DESCRIPTION: contains an array of pointers to both results arrays
+//INPUT:
+//	Parameters: arraySize
+//OUTPUT:
+//	Return Val: results- an array containing both results arrays as pointers
+//------------------------------------------------------------------------
 double** results(int arraySize) {
 	double** results = new double*[2];
 	double* result1 = new double[arraySize];
